@@ -15,12 +15,12 @@ public class Lesson02Quiz01 {
 	
 	@Autowired //1
 	private Quiz01BO quiz01bo;
-	//boÇÑÅ× µ¥ÀÌÅÍ¸¦ ¿äÃ», °¡Á®¿Ã ÁØºñ
+	//boë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
 	
 	@RequestMapping("/lesson02/quiz02")
 	public List<Store> quiz01() {
 	
-		return quiz01bo.getStoreList(); //boÀÇ °ÍÀ» °¡Á®¿È
+		return quiz01bo.getStoreList(); //boì—ê²Œ ë°›ì•„ì˜¨ ë°ì´í„° ë¦¬í„´
 	}
 
 }

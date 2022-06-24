@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Store {
 	
-	//ÀÌ°÷¿¡¼­ db ¿äÃ»À» ¹ŞÀº °ÍÀ» ÀÏ½ÃÀûÀ¸·Î Áı¾î ³Ö´Â °÷
+	//dbì—ì„œ ë°›ì•„ì˜¨ ë°ì´í„°ë¥¼ ì¼ì‹œì €ì¥
 	private int id;
 	private String phoneNumber;
 	private String address;

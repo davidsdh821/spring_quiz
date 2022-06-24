@@ -14,10 +14,10 @@ public class Quiz01BO {
 	
 	@Autowired //2 
 	private Quiz01DAO quiz01DAO;
-	// µ¥ÀÌÅÍ°¡ ¾ø±â ¶§¹®¿¡ daoÀÇ ¸®½ºÆ®¸¦ °¡Á®¿È
+	// daoì˜ ë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
 	public List<Store> getStoreList() {
 		
-		return quiz01DAO.selectStoreList(); //daoÀÇ °ÍÀ» °¡Á®¿È
+		return quiz01DAO.selectStoreList(); //daoì—ê²Œ ë°›ì•„ì˜¨ ë°ì´í„°ë¥¼ ë¦¬í„´
 	}
 	
 }

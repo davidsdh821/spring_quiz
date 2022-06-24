@@ -8,7 +8,7 @@ import com.quiz.lesson02.model.Store;
 @Repository
 public interface Quiz01DAO {
 	//3
-	//ÀÌ°÷¿¡¼­ Store¿¡¼­ °¡Á®¿Â °ÍÀ» ¸®½ºÆ® ¾È¿¡ ³ÖÀ½ id,ÀüÈ­¹øÈ£ Çü½Ä±îÁö ÀüºÎ µé¾î°¡Áø´Ù.
+	//Storeë¥¼ listì•ˆì— ì§‘ì–´ë„£ìŒ
 	public List<Store> selectStoreList();
 
 }
