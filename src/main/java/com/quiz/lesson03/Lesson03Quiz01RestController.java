@@ -53,6 +53,30 @@ public class Lesson03Quiz01RestController {
 		int row = estateBO.addEstateAsField(realtorId, "썅떼빌리버 오피스텔 814호", 45, "월세", 100000, 120);
 		return "입력 성공: " + row;
 	}
+	//http://localhost/lesson03/quiz03/3?id=8&type=전세&price=70000
+	@RequestMapping("/lesson03/quiz03/3")
+	public String  quiz03_3(
+			@RequestParam("id") int id,
+			@RequestParam("type") String type,
+			@RequestParam("price") int price) {
+ 				
+		estateBO.updateEstateById(id, type, price);
+		
+		return "수정성공";
+ 			}
+		//http://localhost/lesson03/quiz03/4?id=5
+		@RequestMapping("/lesson03/quiz03/4")
+		public String ex03_4(
+				@RequestParam("id") int id
+				) {
+			
+			estateBO.deleteEstateById(id);
+			
+			return "삭제완료";
+		}
+	
+	
+	
 	
 	
 	

@@ -21,8 +21,19 @@ public class EstateBO {
 	}
 	
 	public int addEstateAsField(int realtorId, String address, int area, String type, int price, Integer rentPrice) {
-		
+		//이름이 필드 방식으로 삽입할때 AsField를 붙인다.
 		return estateDAO.insertEstateAsField(realtorId, address, area, type, price, rentPrice);
 	}
 
+	public void updateEstateById(int id, String type, int price) {
+		
+	 	estateDAO.updateEstateById(id, type, price);
+	}
+	
+	public void deleteEstateById(int id) {
+		
+		estateDAO.deleteEstateById(id);
+		
+	}
+	
 }
