@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+a{
+	color: white;
+	text-decoration: none;
+		
+}
+
+a:hover{
+	color: white;
+	text-decoration: none;
+}
+
+.warp{
+	width: 1920px;
+	height: 1080px;
+}
+
+.side {
+	width: 220px;
+	height: 900px;
+	background-color: skyblue;
+	
+}
+.content {
+	width: 1000px;
+	height: 900px;
+}
+.footer {
+	width: 1920px;
+	height: 180px;
+}
+.logobox{ 
+	width: 220px;
+	height: 100px;
+	display: flex;
+}
+.logo {
+	width: 200px;
+	height: 100px;
+}
+.text {
+	
+}
+
+

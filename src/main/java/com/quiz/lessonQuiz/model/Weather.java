@@ -5,7 +5,7 @@ import java.util.Date;
 public class Weather {
 	
 	private String id;
-	private String date;
+	private String date; //ModelAttribute를 사용하려면 model.weather에 @datetimeformat("yyyy-mm-dd")를 중간에 넣어주면 된다
 	private String weather;
 	private double temperatures;
 	private double precipitation;
