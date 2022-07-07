@@ -16,16 +16,17 @@
 </head>
 <body>
 	<div class="container">
+	 	<h1>즐겨찾기 추가하기</h1>
 		<form method="post" action="/lesson06/quiz01_2">
 		 <div class="form-group">
  				<label for="name">제목</label>
  				<input type="text" id="name" name="name" class="form-control" placeholder="제목을 입력하세요">
  		</div>
  		 <div class="form-group">
- 				<label for="url">주소</label>
+ 				<label for="url">URL 주소</label>
  				<input type="text" id="url" name="url" class="form-control" placeholder="주소를 입력하세요">
  		</div>
-		 <input type="button" id="addBtn" class="btn btn-success" value="추가">
+		 <input type="button" id="addBtn" class="btn btn-success btn-block" value="추가">
 		
 		
 		</form>
@@ -45,6 +46,11 @@
 	 					
 	 				return; 	
 	 		}	
+	 			//http도(그리고)https도 아닐 때 =>alert 알림.
+	 			if(url.startsWith("http") === false && url.startsWith("https") === false) { // ===은 타입까지 검사
+	 				alert("주소 형식이 잘못되었습니다");
+	 				return;
+	 			}
 	 			
 	 	//보내기
 	 				$.ajax({
@@ -52,17 +58,15 @@
  	 					type:"POST" //requset의 메소드
  	 					, url:"/lesson06/quiz01_2"	//Actuin URL
  	 					, data: {"name": name, "url": url } 
-
- 	 					//response
- 	 					//위의 것과 이어서 하는것이기 때문에 ,붙이기
  	 					, success: function(data) {
  	 						alert(data);
- 	 					}
- 	 					, complete: function(data) { 
- 	 						alert("완료");
+ 	 						location.href ="/lesson06/quiz01_3"
+/* 							alert(data.result);
+ 	 						alert(data.result_code);  
+ 	 						두번째 방식 사용시 오류의 key를 alert으로 꺼내 쓸 수 있다*/
  	 					}
  	 					, error: function(e) {
- 	 						alert("error " + e);
+ 	 						alert("error" + e);
  	 					}
  	 					
  	 				});
