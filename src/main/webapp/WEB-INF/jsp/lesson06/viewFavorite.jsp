@@ -30,9 +30,12 @@
 			<tbody>
 			<c:forEach var="result" items="${result}" varStatus = "status">
 				<tr>
-					<td>${status.count}</td>
+					<td>${result.id}</td>
 					<td>${result.name}</td>
 					<td>${result.url}</td>
+					<%-- name 속성과 value 속성을 이용하는 방식은 가능하면 쓰지말자, value에는 딱 한개의 값만을 담을 수 있기 때문에 범용성이 좋지 않다 --%>
+					<%-- 권장하는 방법: data를 이용하여 태그에 data를 임시 저장하기, data의 이름 지을 땐 무조건 하이픈(-)으로 이름짓자 --%>
+					<td><button type="button" class="btn btn-danger btn-block col-8 del-btn" data-farvorite-id="${result.id}">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
@@ -43,6 +46,41 @@
 	
 	</div>
 	
+	<script>
+		$(document).ready(function() {
+			//태그:data-farvorite-id data- 그 뒤부터는 우리가 이름을 정한다.(카멜[abcId,같은 형식] 절대 안됨)
+			
+			$('.del-btn').on('click', function() {
+				//스크립트: $(this).data('') 태그에 심은 값을 꺼냄
+				let id = $(this).data('farvorite-id'); //data- 는 뺀다/
+				console.log(id);
+				
+				$.ajax({
+					type: "POST"
+					,url: "/lesson06/del_List"
+					,data: {"id": id}
+				
+				//response
+				,success: function(data) {
+					if(data.result == "success") { //data.result값 확인
+						location.reload(true); //새로고침
+					}	 	
+				} 
+				,error: function(e) {
+					alert("삭제 실패")
+				}
+	
+				}); 
+				
+			});
+			
+			
+			
+		});
+	
+	
+	
+	</script>
 
 	
 

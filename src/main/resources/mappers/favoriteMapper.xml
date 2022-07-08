@@ -31,5 +31,29 @@
 		FROM
 			`favorite`
 	</select>
+	
+	 	<select id="selectFavoriteByUrl" resultType="com.quiz.lesson06.model.favorite">
+		SELECT 
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`favorite`
+		WHERE `url` ={url}	
+	</select>
+	<delete id="deleteFarvorite" parameterType="int">
+		DELETE
+		FROM
+			`favorite`
+		WHERE
+			id = #{id}
+		
+	
+	
+	</delete>
+	
+	
  
  </mapper>

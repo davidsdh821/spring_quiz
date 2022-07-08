@@ -30,6 +30,48 @@ public class Lesson06QuizController {
 		
 		return "lesson06/addFavorite";
 	}
+	//url 중복 확인 - ajax로 온 요청
+	@ResponseBody
+	@PostMapping("/is_duplication_url")
+	public Map<String, Boolean> isDuplicationUrl(
+			@RequestParam("url") String url
+			) {
+		//select 중복 확인 , null체크 방식(가져와지면 중복, 값이 null이면 중복 아닌것으로 판단)
+		
+		
+		
+		//map에 결과를 담기, json String
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("is_duplication", true);
+		//return map
+		
+		return result;
+	}
+	@ResponseBody
+	@PostMapping("/del_List") 
+	public Map<String, Object> delList(
+			@RequestParam("id") int id
+			) {
+
+		int row = favoriteBO.delFarvorite(id);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		if(row > 0) { //data.result값을 정해줌
+			map.put("result", "success");
+		} else {
+			map.put("result", "failed");
+		}
+		
+		
+		
+		return map;
+		
+	}
+	
+	
+	
+	
 	//ajax로 들어오는 요청은 반드시 reponsebody가 붙어있어야 하고 string을 return해야한다
 	@ResponseBody
 	@PostMapping("/quiz01_2")

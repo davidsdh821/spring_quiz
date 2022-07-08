@@ -22,10 +22,17 @@
  				<label for="name">제목</label>
  				<input type="text" id="name" name="name" class="form-control" placeholder="제목을 입력하세요">
  		</div>
- 		 <div class="form-group">
- 				<label for="url">URL 주소</label>
- 				<input type="text" id="url" name="url" class="form-control" placeholder="주소를 입력하세요">
- 		</div>
+		<div class="form-group">
+			<label for="url">URL 주소</label>
+			<div class ="d-flex">
+				<input type="text" id="url" class="form-control col-8">
+				<button type="button" class="btn btn-info" id="checkDuplicateBtn">중복확인</button>
+			</div>
+			<small id="duplicationText" class="text-danger d-none">중복된 url</small>
+			<small id="availableUrlText" class="text-success d-none">저장가능한 url 입니다.</small>
+		</div>
+ 		
+
 		 <input type="button" id="addBtn" class="btn btn-success btn-block" value="추가">
 		
 		
@@ -33,6 +40,39 @@
 	</div>
 	<script>
 	$(document).ready(function() {
+		$('#checkDuplicateBtn').on('click',function() {
+			let url =$('#url').val().trim();
+			console.log(url);
+			
+			if(url == "") {
+				alert("URL을 입력하세요.");
+				return;
+			}
+			//중복확인 ajax통신 - db확인
+			$.ajax({
+				//request
+				type: "POST"
+				,url: "/lesson06/is_duplication_url" //주의 ajax를 보내는 주소에는 view를 붙이지 않는다.
+				,data: {"url": url}
+				//response
+				, success: function(data) {
+					if (data.is_duplication) {
+						//중복일 때
+						$('#duplicationText').removeClass('d-none');
+						$('#availableUrlText').addClass('d-none'); //켜지면 반대 것은 꺼지게 하기 위해서 넣어야 한다
+					} else {
+						$('#availableUrlText').removeClass('d-none');
+						$('#duplicationText').addClass('d-none');
+					}
+				}
+				, error: function(e) {
+					alert("중복검사에 실패했습니다/")
+				}
+				
+			});
+		});
+		
+		
 		$("#addBtn").on('click', function() {
 			let name =  $('#name').val().trim();
 	 			if (name == "") {
@@ -51,6 +91,16 @@
 	 				alert("주소 형식이 잘못되었습니다");
 	 				return;
 	 			}
+	 	//url 중복확인 체크
+	 	// '저장가능한 url입니다' 문가가 숨겨져 있을 때 alert을 띄운다
+	 	// d-none이 있을 때
+	 	if($('#availableUrlText').hasClass('d-none')) { //hasClass class의 상태를 확인(d-none이 있는지 없는지)
+	 		alert("URL 중복확인을 다시 해주세요");
+	 		return;
+	 	}
+	 			
+	 			
+	 			
 	 			
 	 	//보내기
 	 				$.ajax({
@@ -73,18 +123,12 @@
 			
 			
 		});
-		
-		
-		
-		
-		
-		
+			
 		
 	});
 			
-			
-	
-	</script>
+		
+</script>
 
 
 
