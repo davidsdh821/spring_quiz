@@ -1,5 +1,6 @@
 package com.quiz.pension.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,16 @@ public class PensionBO {
 		return pensionDAO.selectPension();
 	}
 	
+	public int delPension(int id) {
+		
+		return pensionDAO.deletePension(id);
+	}
+	
+	//insert
+	public void addPensionAsField(String name, Date date, int day, int headcount, String phoneNumber) {
+		
+		pensionDAO.insertPensionAsField(name, date, day, headcount, phoneNumber);
+	}
 	
 	
 	

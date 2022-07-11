@@ -19,6 +19,41 @@
 
 	</select>
 
-
-
+	<delete id="deletePension" parameterType="int">
+		DELETE 
+		FROM
+			`booking`
+		WHERE
+			id = #{id}
+	</delete>
+	
+	<insert id="insertPensionAsField" parameterType="map">
+		INSERT INTO 
+			`booking`
+		(
+			`name`
+			,`headcount`
+			,`day`
+			,`date`
+			,`phoneNumber`
+			,`state`
+			,`createdAt`
+			,`updatedAt`
+		)
+		VALUES
+		(	
+			#{name}
+			,#{headcount}
+			,#{day}
+			,#{date}
+			,#{phoneNumber}
+			,#{state}
+			, NOW()
+			, NOW()		
+		)
+	</insert>
+	
+	
+	
+	
 </mapper>

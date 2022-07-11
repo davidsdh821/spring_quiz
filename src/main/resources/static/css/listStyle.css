@@ -4,3 +4,16 @@ header {height:100px;}
 
 nav {height:40px; background-color:#E3871F;}
 .nav-item .nav-link:hover {background-color:#A76417;}
+
+h1 {
+	text-align: center;
+}
+
+
+
+
+
+
+footer {height:80px;}
+footer .address {font-size:12px; color:#999;}
+

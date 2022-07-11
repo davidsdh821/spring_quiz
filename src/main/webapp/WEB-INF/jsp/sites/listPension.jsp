@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,20 +47,79 @@
 			<tbody>
 			<c:forEach var="result" items="${result}">
 				<tr>
-					<td class ="d-none">${result.id}</td>
+					<%-- <td class ="d-none">${result.id}</td> --%>
 					<td>${result.name}</td>
-					<td>${result.headcount}</td>
+					<td><fmt:formatDate value="${result.date}" pattern="yyyy년 MM월 dd일" var="pattern"/> 
+						${pattern}</td>
 					<td>${result.day}</td>
-					<td>${result.date}</td>
+					<td>${result.headcount}</td>
 					<td>${result.phoneNumber}</td>
-					<td>${result.state}</td>
+					<c:choose>
+					<c:when test="${result.state eq '대기중'}">
+					<td class="text-primary">${result.state}</td>
+					</c:when>
+					
+					<c:otherwise>
+						<td class="text-success">${result.state}</td>
+					</c:otherwise>
+					</c:choose>
+					<td><button type="button" class="btn btn-danger btn-block del-btn col-8" data-pension-id="${result.id}">삭제</button></td>
+					
 				</tr>
 				</c:forEach>
 			</tbody>
 
 		</table>
+		
+		 <footer>
+                <div class="address m-3">
+                    제주특별자치도 제주시 애월읍<br>
+                    사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목<br>
+                    Copyright 2025 tongnamu. All right reserved.
+                </div>
+           </footer>
+		
 
 	</div>
+	
+	<script>
+		$(document).ready(function () {
+			$('.del-btn').on('click', function() {
+				let id = $(this).data('pension-id');
+				console.log(id);
+				
+				
+				$.ajax({
+					type:"POST"
+					,url: "/log/del_btn"
+					,data:{"id": id}
+					
+					,success: function(data) {
+						if(data.del =="success") {
+							location.reload(true);
+						}
+					}
+					,error: function(e) {
+						alert("삭제실패");
+					}
+									
+				
+				
+				});
+				
+				
+				
+			});
+			
+	
+			
+			
+		});
+			
+		
+	</script>
+	
+	
 
 
 </body>
