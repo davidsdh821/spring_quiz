@@ -79,7 +79,16 @@
 		});
 		
 		$('#joinBtn').on('click', function() {
+			let name = $('#name').val().trim();
 			let date = $('#date').val().trim();
+			let day = $('#day').val().trim();
+			let headcount = $('#headcount').val().trim();
+			let phoneNumber = $('#phoneNumber').val().trim();
+/* 			console.log(name);
+			console.log(date);
+			console.log(day);
+			console.log(headcount);
+			console.log(phoneNumber); */
 			
 			$.ajax({
 				type:"POST"
@@ -87,7 +96,7 @@
 				,data: {"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
 				
 				,success: function(data) {
-					location.href ="/log/pensionList"
+					location.href ="/log/pensionList" //get방식의 하나다 
 				}
 				,error:function(e) {
 					alert("error" + e)
