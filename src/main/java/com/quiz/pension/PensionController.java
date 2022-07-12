@@ -94,6 +94,31 @@ public class PensionController {
 	}
 	
 	
+	//http://localhost/log/main
+	@RequestMapping("/main")
+	public String main() {
+		
+		return "sites/main";
+	}
+	
+	@ResponseBody
+	@PostMapping("/selectData")
+	public Pension selectdata( //로직(계산)이 들어가면 bo에서 처리한다
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber
+			) {
+		
+		Pension pension = pensionBO.getUserData(name, phoneNumber);
+		
+		
+		
+		
+		return pension;
+		
+	}
+	
+	
+	
 	
 	
 }

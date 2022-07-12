@@ -34,6 +34,13 @@ public class PensionBO {
 		pensionDAO.insertPensionAsField(name, date, day, headcount, phoneNumber);
 	}
 	
+	//조회
+	public Pension getUserData(String name, String phoneNumber) {
+		
+		
+			return pensionDAO.selectUserData(name, phoneNumber);
+		
+	}
 	
 	
 	

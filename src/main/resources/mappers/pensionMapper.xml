@@ -53,6 +53,28 @@
 		)
 	</insert>
 	
+	<select id="selectUserData" resultType="com.quiz.pension.model.Pension">
+		SELECT 
+			`id`
+			,`name`
+			,`headcount`
+			,`day`
+			,`date`
+			,`phoneNumber`
+			,`state`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`booking`
+		WHERE
+			`name` like #{name}
+		AND
+			`phoneNumber` like #{phoneNumber}	
+		
+	
+	</select>
+	
+	
 	
 	
 	
